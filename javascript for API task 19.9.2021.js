@@ -14,11 +14,15 @@ let button = document.querySelector(".input-field>button");
             },
             body : JSON.stringify({ "text":`${myText}` })
         });
+        if(output.status > 400){
+            throw 'invalid request'
+        }
         output = await output.json(); 
         output = {
             type: output.result.type,
             polarity: output.result.polarity
         };
+        
         let br = document.createElement('br');
         resultDiv.innerText = "";
         resultDiv.innerText = "";
