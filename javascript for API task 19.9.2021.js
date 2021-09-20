@@ -5,6 +5,8 @@ let button = document.querySelector(".input-field>button");
     let input = document.getElementById("text-area-1").value;
     let resultDiv = document.getElementById("result-div");
     async function fetchFunc(myText){
+        loadingStatus  = "loading..."
+        resultDiv.append(loadingStatus);
         let output =  await fetch("https://sentim-api.herokuapp.com/api/v1/" ,{
             method: "POST",
             headers :{
@@ -18,6 +20,7 @@ let button = document.querySelector(".input-field>button");
             polarity: output.result.polarity
         };
         let br = document.createElement('br');
+        resultDiv.innerText = "";
         resultDiv.innerText = "";
          for(let property in output){
             resultDiv.append(br);
