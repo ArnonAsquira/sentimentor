@@ -1,5 +1,5 @@
 let button = document.querySelector(".input-field>button");
-
+let cat = document.getElementById('cat');
 // event handler for button
   function getInput(e){
     let input = document.getElementById("text-area-1").value;
@@ -15,10 +15,10 @@ let button = document.querySelector(".input-field>button");
             },
             body : JSON.stringify({ "text":`${myText}` })
         });
-        /*et cat = await fetch (`https://http.cat/?[status_code]=200`)
-        console.log(cat);*/
+        cat.src = `https://http.cat/${output.status}`;
         if(output.status > 400){
-            resultDiv.append("Error: invalid request")
+            resultDiv.innerText = "";
+            resultDiv.append("Error: invalid request");
         }else{
         output = await output.json(); 
         output = {
@@ -41,7 +41,6 @@ let button = document.querySelector(".input-field>button");
              }
             }
          }
-          //resultDiv.append(cat)
         }
     fetchFunc(input);
 };
